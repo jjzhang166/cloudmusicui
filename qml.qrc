@@ -1,0 +1,55 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>RightListFrame.qml</file>
+        <file>TopWindowFrame.qml</file>
+        <file>SearchLine.qml</file>
+        <file>PopWindow.qml</file>
+        <file>InfoWindow.qml</file>
+        <file>BottomFrame.qml</file>
+        <file>MusicView.qml</file>
+        <file>CanvasCxt.qml</file>
+    </qresource>
+    <qresource prefix="/res/right_list_frame">
+        <file>res/RightListFrame/icon_findmusic.png</file>
+        <file>res/RightListFrame/icon_fm.png</file>
+        <file>res/RightListFrame/icon_friend.png</file>
+        <file>res/RightListFrame/icon_mv.png</file>
+        <file>res/RightListFrame/icon_clouddisk.png</file>
+        <file>res/RightListFrame/icon_download.png</file>
+        <file>res/RightListFrame/icon_localmusic.png</file>
+        <file>res/RightListFrame/icon_songer.png</file>
+        <file>res/RightListFrame/icon_station.png</file>
+        <file>res/RightListFrame/item_addmusic.png</file>
+        <file>res/RightListFrame/item_listmusic.png</file>
+        <file>res/RightListFrame/btn_add.png</file>
+        <file>res/RightListFrame/btn_list.png</file>
+        <file>res/RightListFrame/btn_list_hover.png</file>
+        <file>res/RightListFrame/icon_heart.png</file>
+        <file>res/RightListFrame/icon_music.png</file>
+    </qresource>
+    <qresource prefix="/res/top_frame">
+        <file>res/TopWindowFrame/icon_close.png</file>
+        <file>res/TopWindowFrame/icon_close_hover.png</file>
+        <file>res/TopWindowFrame/icon_cute.png</file>
+        <file>res/TopWindowFrame/icon_max.png</file>
+        <file>res/TopWindowFrame/icon_min.png</file>
+        <file>res/TopWindowFrame/Logo.png</file>
+        <file>res/TopWindowFrame/icon_max_hover.png</file>
+        <file>res/TopWindowFrame/icon_min_hover.png</file>
+        <file>res/TopWindowFrame/icon_cute_hover.png</file>
+        <file>res/TopWindowFrame/icon_search.png</file>
+        <file>res/TopWindowFrame/header_center.png</file>
+        <file>res/TopWindowFrame/icon_Info.png</file>
+        <file>res/TopWindowFrame/icon_Setting.png</file>
+        <file>res/TopWindowFrame/icon_Theme.png</file>
+        <file>res/TopWindowFrame/SplitLine.png</file>
+        <file>res/TopWindowFrame/icon_Info_hover.png</file>
+        <file>res/TopWindowFrame/icon_Theme_hover.png</file>
+        <file>res/TopWindowFrame/icon_infowin_close.png</file>
+        <file>res/TopWindowFrame/icon_infowin_close_hover.png</file>
+    </qresource>
+    <qresource prefix="/res/bottom_frame">
+        <file>res/BottomFrame/icon_vol.png</file>
+    </qresource>
+</RCC>
