@@ -1,16 +1,14 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>RightListFrame.qml</file>
-        <file>TopWindowFrame.qml</file>
-        <file>SearchLine.qml</file>
-        <file>PopWindow.qml</file>
-        <file>InfoWindow.qml</file>
-        <file>BottomFrame.qml</file>
-        <file>MusicView.qml</file>
-        <file>CanvasCxt.qml</file>
-    </qresource>
-    <qresource prefix="/res/right_list_frame">
+        <file>UI/main.qml</file>
+        <file>UI/RightListFrame.qml</file>
+        <file>UI/TopWindowFrame.qml</file>
+        <file>UI/SearchLine.qml</file>
+        <file>UI/PopWindow.qml</file>
+        <file>UI/InfoWindow.qml</file>
+        <file>UI/BottomFrame.qml</file>
+        <file>UI/MusicView.qml</file>
+        <file>UI/CanvasCxt.qml</file>
         <file>res/RightListFrame/icon_findmusic.png</file>
         <file>res/RightListFrame/icon_fm.png</file>
         <file>res/RightListFrame/icon_friend.png</file>
@@ -27,8 +25,6 @@
         <file>res/RightListFrame/btn_list_hover.png</file>
         <file>res/RightListFrame/icon_heart.png</file>
         <file>res/RightListFrame/icon_music.png</file>
-    </qresource>
-    <qresource prefix="/res/top_frame">
         <file>res/TopWindowFrame/icon_close.png</file>
         <file>res/TopWindowFrame/icon_close_hover.png</file>
         <file>res/TopWindowFrame/icon_cute.png</file>
@@ -48,8 +44,17 @@
         <file>res/TopWindowFrame/icon_Theme_hover.png</file>
         <file>res/TopWindowFrame/icon_infowin_close.png</file>
         <file>res/TopWindowFrame/icon_infowin_close_hover.png</file>
-    </qresource>
-    <qresource prefix="/res/bottom_frame">
         <file>res/BottomFrame/icon_vol.png</file>
+        <file>res/BottomFrame/btn_nextsong.png</file>
+        <file>res/BottomFrame/btn_pause.png</file>
+        <file>res/BottomFrame/btn_play.png</file>
+        <file>res/BottomFrame/btn_presong.png</file>
+        <file>res/BottomFrame/listcycle.png</file>
+        <file>res/BottomFrame/lyric.png</file>
+        <file>res/BottomFrame/songlist.png</file>
+        <file>UI/CenterView/LocalmusicView.qml</file>
+        <file>res/RightListFrame/icon_localmusic_pressed.png</file>
+        <file>UI/CenterView/DownloadmanagerView.qml</file>
+        <file>UI/CenterView/FindmusicView.qml</file>
     </qresource>
 </RCC>

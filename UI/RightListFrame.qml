@@ -3,6 +3,7 @@
 Item {
     id: rightframe
     property int scroll_height: 511
+    property int rightview: 0
 
     Rectangle {
         id: rectangle1
@@ -28,33 +29,35 @@ Item {
             width: parent.width
             height: 160
             anchors.top: item_recommand.bottom
-            anchors.topMargin: -16
+            anchors.topMargin: -3
             model: ListModel {
                 ListElement {
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_findmusic.png"
-                    label: "FindMusic"
+                    icon: "qrc:/res/RightListFrame/icon_findmusic.png"
+                    label: qsTr("FindMusic")
                 }
 
                 ListElement {
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_fm.png"
-                    label: "PrivateFM"
+                    icon: "qrc:/res/RightListFrame/icon_fm.png"
+                    label: qsTr("PrivateFM")
                 }
 
                 ListElement {
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_mv.png"
-                    label: "MV"
+                    icon: "qrc:/res/RightListFrame/icon_mv.png"
+                    label: qsTr("MV")
                 }
 
                 ListElement {
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_friend.png"
-                    label: "Friend"
+                    icon: "qrc:/res/RightListFrame/icon_friend.png"
+                    label: qsTr("Friend")
                 }
             }
             delegate: Item {
                 width: parent.width
-                height: 30
+                height: 32
                 Row {
-                    spacing: 10
+                    spacing: 9
+                    anchors.left: parent.left
+                    anchors.leftMargin: 16
                     Image {
                         id: img_icon
                         source: icon
@@ -89,43 +92,81 @@ Item {
             width: parent.width
             height: 160
             anchors.top: item_music.bottom
-            anchors.topMargin: -16
+            anchors.topMargin: -3
             model: ListModel {
                 ListElement {
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_localmusic.png"
-                    label: "LocalMusic"
+                    icon: "qrc:/res/RightListFrame/icon_localmusic.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_localmusic_pressed.png"
+                    label: qsTr("LocalMusic")
                 }
 
                 ListElement {
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_download.png"
-                    label: "DownloadManager"
+                    icon: "qrc:/res/RightListFrame/icon_download.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_localmusic_pressed.png"
+                    label: qsTr("DownloadManager")
                 }
 
                 ListElement {
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_clouddisk.png"
-                    label: "CloudDisk"
+                    icon: "qrc:/res/RightListFrame/icon_clouddisk.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_localmusic_pressed.png"
+                    label: qsTr("CloudDisk")
                 }
 
                 ListElement {
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_songer.png"
-                    label: "MySonger"
+                    icon: "qrc:/res/RightListFrame/icon_songer.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_localmusic_pressed.png"
+                    label: qsTr("MySonger")
                 }
 
                 ListElement {
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_station.png"
-                    label: "MyStation"
+                    icon: "qrc:/res/RightListFrame/icon_station.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_localmusic_pressed.png"
+                    label: qsTr("MyStation")
                 }
             }
             delegate: Item {
+                id: wrapper
                 width: parent.width
-                height: 30
+                height: 32
+                MouseArea {
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onEntered: {
+                        cursorShape = Qt.PointingHandCursor
+                        text_.color = "black"
+                    }
+                    onExited: {
+                        cursorShape = Qt.ArrowCursor
+                        if(!wrapper.ListView.isCurrentItem)
+                            text_.color = "#5c5c5c"
+                    }
+                    onClicked: {
+                        rightframe.rightview = index + 4
+                        view_music.currentIndex = index
+                    }
+                }
+                Rectangle {
+                    id: item_bg
+                    anchors.fill: parent
+                    color: wrapper.ListView.isCurrentItem? "#e6e7ea" : "transparent"
+                    Rectangle {
+                        height: parent.height
+                        width: 3
+                        anchors.left: parent.left
+                        color: wrapper.ListView.isCurrentItem? "#c62f2f" : "transparent"
+                    }
+                }
                 Row {
-                    spacing: 10
+                    spacing: 9
+                    anchors.left: parent.left
+                    anchors.leftMargin: 16
+                    anchors.verticalCenter: item_bg.verticalCenter
                     Image {
                         id: img_icon_
-                        source: icon
+                        source: wrapper.ListView.isCurrentItem? icon_press : icon
                     }
                     Text {
+                        id: text_
                         text: label
                         height: img_icon_.height
                         verticalAlignment: Text.AlignVCenter
@@ -147,8 +188,8 @@ Item {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
                 onClicked: {
-                    if(view_songlist.height==-1) {
-                        btn_list.source = "qrc:/res/right_list_frame/res/RightListFrame/btn_list_hover.png"
+                    if(view_songlist.height == -1) {
+                        btn_list.source = "qrc:/res/RightListFrame/btn_list_hover.png"
                         var vheight = (model_songlist.rowCount()) * 30
                         if(item_songlist.y + vheight > rightframe.height){
                             rightframe.height = item_songlist.y + vheight + 60 + view_collection.height
@@ -160,11 +201,10 @@ Item {
                         }
                     }
                     else{
-                        btn_list.source = "qrc:/res/right_list_frame/res/RightListFrame/btn_list.png"
+                        btn_list.source = "qrc:/res/RightListFrame/btn_list.png"
                         view_songlist.height = -1
                         rightframe.height=(view_collection.y + view_collection.height -30) > scroll_height ?
                                     view_collection.y + view_collection.height - 30:scroll_height;
-                        //rightframe.height = scroll_height + view_collection.height
                     }
                 }
             }
@@ -182,7 +222,7 @@ Item {
                 anchors.right: btn_list.left
                 anchors.rightMargin: 10
                 anchors.verticalCenter: parent.verticalCenter
-                source: "qrc:/res/right_list_frame/res/RightListFrame/btn_add.png"
+                source: "qrc:/res/RightListFrame/btn_add.png"
             }
 
             Image {
@@ -190,12 +230,13 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
                 anchors.rightMargin: 10
-                source: "qrc:/res/right_list_frame/res/RightListFrame/btn_list.png"
+                source: "qrc:/res/RightListFrame/btn_list.png"
             }
         }
 
         ListView {
             id: view_songlist
+            interactive: false
             width: parent.width
             height: -1
             anchors.top: item_songlist.bottom
@@ -203,33 +244,33 @@ Item {
             model: ListModel {
                 id: model_songlist
                 ListElement {
-                    tag: "MyFavorite"
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_heart.png"
+                    tag: qsTr("MyFavorite")
+                    icon: "qrc:/res/RightListFrame/icon_heart.png"
                 }
 
                 ListElement {
-                    tag: "list_item1"
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_music.png"
+                    tag: qsTr("list_item1")
+                    icon: "qrc:/res/RightListFrame/icon_music.png"
                 }
 
                 ListElement {
-                    tag: "list_item2"
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_music.png"
+                    tag: qsTr("list_item2")
+                    icon: "qrc:/res/RightListFrame/icon_music.png"
                 }
 
                 ListElement {
-                    tag: "list_item3"
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_music.png"
+                    tag: qsTr("list_item3")
+                    icon: "qrc:/res/RightListFrame/icon_music.png"
                 }
 
                 ListElement {
-                    tag: "list_item4"
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_music.png"
+                    tag: qsTr("list_item4")
+                    icon: "qrc:/res/RightListFrame/icon_music.png"
                 }
 
                 ListElement {
-                    tag: "list_item5"
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_music.png"
+                    tag: qsTr("list_item5")
+                    icon: "qrc:/res/RightListFrame/icon_music.png"
                 }
             }
             delegate: Item {
@@ -263,7 +304,7 @@ Item {
                 cursorShape: Qt.PointingHandCursor
                 onClicked: {
                     if(view_collection.height == -1) {
-                        btn_collection.source  = "qrc:/res/right_list_frame/res/RightListFrame/btn_list_hover.png"
+                        btn_collection.source  = "qrc:/res/RightListFrame/btn_list_hover.png"
                         var vheight = (model_collection.rowCount() + 1) * 30
                         if(item_collection.y+vheight > rightframe.height) {
                             rightframe.height = item_collection.y + vheight
@@ -275,11 +316,10 @@ Item {
                         }
                     }
                     else {
-                        btn_collection.source = "qrc:/res/right_list_frame/res/RightListFrame/btn_list.png"
+                        btn_collection.source = "qrc:/res/RightListFrame/btn_list.png"
                         view_collection.height = -1
                         rightframe.height=(view_songlist.y + view_songlist.height + 30) > scroll_height ?
                                     view_songlist.y + view_songlist.height + 30 : scroll_height;
-                        //rightframe.height = scroll_height + view_songlist.height
                     }
                 }
             }
@@ -287,7 +327,7 @@ Item {
                 height: parent.height
                 anchors.left: parent.left
                 anchors.leftMargin: 8
-                text: "CollectionList"
+                text: qsTr("CollectionList")
                 verticalAlignment: Text.AlignVCenter
                 color: "#7d7d7d"
             }
@@ -296,7 +336,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
                 anchors.rightMargin: 10
-                source: "qrc:/res/right_list_frame/res/RightListFrame/btn_list.png"
+                source: "qrc:/res/RightListFrame/btn_list.png"
             }
         }
 
@@ -310,16 +350,16 @@ Item {
             model: ListModel {
                 id: model_collection
                 ListElement {
-                    tag: "list_item1"
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_music.png"
+                    tag: qsTr("list_item1")
+                    icon: "qrc:/res/RightListFrame/icon_music.png"
                 }
                 ListElement {
-                    tag: "list_item2"
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_music.png"
+                    tag: qsTr("list_item2")
+                    icon: "qrc:/res/RightListFrame/icon_music.png"
                 }
                 ListElement {
-                    tag: "list_item3"
-                    icon: "qrc:/res/right_list_frame/res/RightListFrame/icon_music.png"
+                    tag: qsTr("list_item3")
+                    icon: "qrc:/res/RightListFrame/icon_music.png"
                 }
             }
 

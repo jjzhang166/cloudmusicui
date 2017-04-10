@@ -4,6 +4,8 @@ import QtQuick.Controls.Styles 1.4
 import QtGraphicalEffects 1.0
 
 Item {
+    property int base_window_width: 1022
+    property int current_window_width
 
     Rectangle {
         id: bframe
@@ -14,38 +16,89 @@ Item {
 
         Rectangle {
             id: btn_prev
-            width: 32
-            height: 32
+            width: 30
+            height: 30
             color: "#e83c3c"
             radius: 16
             anchors.left: parent.left
             anchors.leftMargin: 30
             anchors.verticalCenter: parent.verticalCenter
             border.width: 0
+            Image {
+                id: btn_prev_icon
+                anchors.centerIn: parent
+                source: "qrc:/res/BottomFrame/btn_presong.png"
+            }
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {
+                    cursorShape = Qt.PointingHandCursor
+                    parent.color = "#d33030"
+                }
+                onExited: {
+                    cursorShape = Qt.ArrowCursor
+                    parent.color = "#e83c3c"
+                }
+            }
         }
 
         Rectangle {
             id: btn_next
-            width: 32
-            height: 32
+            width: 30
+            height: 30
             color: "#e83c3c"
             radius: 16
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: btn_play.right
             anchors.leftMargin: 24
             border.width: 0
+            Image {
+                id: btn_next_icon
+                anchors.centerIn: parent
+                source: "qrc:/res/BottomFrame/btn_nextsong.png"
+            }
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {
+                    cursorShape = Qt.PointingHandCursor
+                    parent.color = "#d33030"
+                }
+                onExited: {
+                    cursorShape = Qt.ArrowCursor
+                    parent.color = "#e83c3c"
+                }
+            }
         }
 
         Rectangle {
             id: btn_play
-            width: 36
-            height: 36
+            width: 33
+            height: 33
             color: "#e83c3c"
             radius: 18
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: btn_prev.right
             anchors.leftMargin: 24
             border.width: 0
+            Image {
+                id: btn_play_icon
+                anchors.centerIn: parent
+                source: "qrc:/res/BottomFrame/btn_play.png"
+            }
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {
+                    cursorShape = Qt.PointingHandCursor
+                    parent.color = "#d33030"
+                }
+                onExited: {
+                    cursorShape = Qt.ArrowCursor
+                    parent.color = "#e83c3c"
+                }
+            }
         }
 
         Text {
@@ -60,7 +113,7 @@ Item {
 
         Slider {
             id: playSlider
-            width: 487
+            width: 438 + (current_window_width - base_window_width)
             height: 22
             anchors.left: cur_time.right
             anchors.leftMargin: 15
@@ -125,7 +178,7 @@ Item {
             text: qsTr("99:99")
             color: "#333333"
             anchors.left: playSlider.right
-            anchors.leftMargin: 9
+            anchors.leftMargin: 11
             anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 12
         }
@@ -135,12 +188,12 @@ Item {
             anchors.left: total_time.right
             anchors.leftMargin: 24
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/res/bottom_frame/res/BottomFrame/icon_vol.png"
+            source: "qrc:/res/BottomFrame/icon_vol.png"
         }
 
         Slider {
             id: volSlider
-            width: 100
+            width: 98
             height: 20
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: icon_vol.right
@@ -199,7 +252,6 @@ Item {
                     }
                 }
             }
-
             MouseArea {
                 id: ma1
                 anchors.fill: parent
@@ -207,5 +259,29 @@ Item {
                 hoverEnabled: true
             }
         }
+    }
+
+    Image {
+        id: songlist
+        anchors.right: parent.right
+        anchors.rightMargin:14
+        anchors.verticalCenter: parent.verticalCenter
+        source: "qrc:/res/BottomFrame/songlist.png"
+    }
+
+    Image {
+        id: lyric
+        anchors.right: songlist.left
+        anchors.rightMargin: 16
+        anchors.verticalCenter: parent.verticalCenter
+        source: "qrc:/res/BottomFrame/lyric.png"
+    }
+
+    Image {
+        id: playcontrol
+        anchors.right: lyric.left
+        anchors.rightMargin: 18
+        anchors.verticalCenter: parent.verticalCenter
+        source: "qrc:/res/BottomFrame/listcycle.png"
     }
 }

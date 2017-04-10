@@ -12,7 +12,7 @@ FocusScope {
     onFocusChanged: {
         if(focus) {
             hint.opacity = 0
-            window_loader.source = "qrc:/PopWindow.qml"
+            window_loader.source = "qrc:/UI/PopWindow.qml"
         }
         else {
             hint.opacity = 1

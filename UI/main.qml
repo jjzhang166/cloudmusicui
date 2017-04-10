@@ -7,12 +7,12 @@ import QtQuick.Controls.Styles 1.4
 Window {
     id: window
     visible: true
-    height: 670
-    width: 1022
-
-    CanvasCxt {
-        anchors.fill: parent
-    }
+    minimumHeight: 670
+    minimumWidth: 1022
+    onWidthChanged:  bf.current_window_width = width
+    //CanvasCxt {
+    //    anchors.fill: parent
+    //}
 
     TopWindowFrame {
         id: tf
@@ -48,16 +48,52 @@ Window {
             }
         }
 
+        property var rf_view: _rf
         RightListFrame {
+            id: _rf
             width: 198
             height: 511
+            onHeightChanged:
+                if(height > 511) {
+                    width = 186
+                    rf.width = 198
+                }
+                else {
+                    width = 198
+                    rf.width = 210
+                }
         }
+    }
+
+    Connections {
+        target: rf.rf_view
+        onRightviewChanged:
+            switch(rf.rf_view.rightview) {
+            case 0:
+                centerframe.source = "qrc:/UI/CenterView/FindmusicView.qml"
+                break
+            case 4:
+                centerframe.source = "qrc:/UI/CenterView/LocalmusicView.qml"
+                break
+            case 5:
+                centerframe.source = "qrc:/UI/CenterView/DownloadmanagerView.qml"
+                break
+            }
+    }
+
+    Loader {
+        id: centerframe
+        x: 186
+        y: tf.height
+        width: parent.width - 186
+        height: parent.height - tf.height - bf.height
+        source: "qrc:/UI/CenterView/LocalmusicView.qml"
     }
 
     MusicView {
         z: 10
-        id: musicView1
-        width: rf.width - 1
+        id: mv
+        width: 198//rf.width - 1
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
         anchors.top: rf.bottom
@@ -65,10 +101,12 @@ Window {
     }
 
     BottomFrame {
+        id: bf
         z: 10
         width: parent.width
         height: 48
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
+        current_window_width: window.width
     }
 }

@@ -24,6 +24,6 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: -10
-        source: "qrc:/res/top_frame/res/TopWindowFrame/header_center.png"
+        source: "qrc:/res/TopWindowFrame/header_center.png"
     }
 }

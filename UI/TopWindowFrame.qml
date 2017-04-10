@@ -47,7 +47,7 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: 15
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/res/top_frame/res/TopWindowFrame/Logo.png"
+            source: "qrc:/res/TopWindowFrame/Logo.png"
         }
 
         Image {
@@ -55,14 +55,14 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 18
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/res/top_frame/res/TopWindowFrame/icon_close.png"
+            source: "qrc:/res/TopWindowFrame/icon_close.png"
             MouseArea {
                 id: mouseArea
                 anchors.fill: parent
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
-                onEntered: btn_close.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_close_hover.png"
-                onExited: btn_close.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_close.png"
+                onEntered: btn_close.source = "qrc:/res/TopWindowFrame/icon_close_hover.png"
+                onExited: btn_close.source = "qrc:/res/TopWindowFrame/icon_close.png"
                 onClicked: Qt.quit()
             }
         }
@@ -72,15 +72,15 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 40
-            source: "qrc:/res/top_frame/res/TopWindowFrame/icon_max.png"
+            source: "qrc:/res/TopWindowFrame/icon_max.png"
             MouseArea {
                 property int max_winheight: -1
                 id: maxmouse_area
                 anchors.fill: parent
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
-                onEntered: btn_max.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_max_hover.png"
-                onExited: btn_max.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_max.png"
+                onEntered: btn_max.source = "qrc:/res/TopWindowFrame/icon_max_hover.png"
+                onExited: btn_max.source = "qrc:/res/TopWindowFrame/icon_max.png"
                 onClicked: {
                     if(max_winheight == -1) {
                         window.showMaximized()
@@ -100,13 +100,13 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 62
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/res/top_frame/res/TopWindowFrame/icon_min.png"
+            source: "qrc:/res/TopWindowFrame/icon_min.png"
             MouseArea {
                 anchors.fill: parent
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
-                onEntered: btn_min.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_min_hover.png"
-                onExited: btn_min.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_min.png"
+                onEntered: btn_min.source = "qrc:/res/TopWindowFrame/icon_min_hover.png"
+                onExited: btn_min.source = "qrc:/res/TopWindowFrame/icon_min.png"
                 onClicked: window.showMinimized()
             }
         }
@@ -116,13 +116,13 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 84
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/res/top_frame/res/TopWindowFrame/icon_cute.png"
+            source: "qrc:/res/TopWindowFrame/icon_cute.png"
             MouseArea {
                 anchors.fill: parent
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
-                onEntered: btn_cute.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_cute_hover.png"
-                onExited: btn_cute.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_cute.png"
+                onEntered: btn_cute.source = "qrc:/res/TopWindowFrame/icon_cute_hover.png"
+                onExited: btn_cute.source = "qrc:/res/TopWindowFrame/icon_cute.png"
             }
         }
 
@@ -168,7 +168,7 @@ Item {
             anchors.left: rectangle2.right
             anchors.leftMargin: -20
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/res/top_frame/res/TopWindowFrame/icon_search.png"
+            source: "qrc:/res/TopWindowFrame/icon_search.png"
             MouseArea {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
@@ -179,7 +179,7 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 117
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/res/top_frame/res/TopWindowFrame/SplitLine.png"
+            source: "qrc:/res/TopWindowFrame/SplitLine.png"
         }
 
         Image {
@@ -187,7 +187,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 135
-            source: "qrc:/res/top_frame/res/TopWindowFrame/icon_Setting.png"
+            source: "qrc:/res/TopWindowFrame/icon_Setting.png"
         }
 
         Image {
@@ -195,15 +195,15 @@ Item {
             anchors.right: btn_setting.left
             anchors.rightMargin: 25
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/res/top_frame/res/TopWindowFrame/icon_Info.png"
+            source: "qrc:/res/TopWindowFrame/icon_Info.png"
             MouseArea {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
                 hoverEnabled: true
-                onEntered: btn_info.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_Info_hover.png"
-                onExited: btn_info.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_Info.png"
+                onEntered: btn_info.source = "qrc:/res/TopWindowFrame/icon_Info_hover.png"
+                onExited: btn_info.source = "qrc:/res/TopWindowFrame/icon_Info.png"
                 onClicked:  if(infowindow_loader.source=="")
-                                infowindow_loader.source = "qrc:/InfoWindow.qml"
+                                infowindow_loader.source = "qrc:/UI/InfoWindow.qml"
                             else
                                 infowindow_loader.source = ""
 
@@ -215,13 +215,13 @@ Item {
             anchors.right: btn_info.left
             anchors.rightMargin: 25
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/res/top_frame/res/TopWindowFrame/icon_Theme.png"
+            source: "qrc:/res/TopWindowFrame/icon_Theme.png"
             MouseArea {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
                 hoverEnabled: true
-                onEntered: btn_theme.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_Theme_hover.png"
-                onExited: btn_theme.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_Theme.png"
+                onEntered: btn_theme.source = "qrc:/res/TopWindowFrame/icon_Theme_hover.png"
+                onExited: btn_theme.source = "qrc:/res/TopWindowFrame/icon_Theme.png"
             }
         }
     }

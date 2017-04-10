@@ -5,10 +5,7 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    QtWebView::initialize();
     QQmlApplicationEngine engine;
-    engine.addImportPath("D:/QMLStudy/cloudmusic/Modules");
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-
+    engine.load(QUrl(QStringLiteral("qrc:/UI/main.qml")));
     return app.exec();
 }

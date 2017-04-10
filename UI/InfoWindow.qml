@@ -89,13 +89,13 @@ Item {
             anchors.topMargin: 10
             anchors.right: parent.right
             anchors.rightMargin: 10
-            source: "qrc:/res/top_frame/res/TopWindowFrame/icon_infowin_close.png"
+            source: "qrc:/res/TopWindowFrame/icon_infowin_close.png"
             MouseArea {
                 anchors.fill: parent
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
-                onEntered: parent.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_infowin_close_hover.png"
-                onExited: parent.source = "qrc:/res/top_frame/res/TopWindowFrame/icon_infowin_close.png"
+                onEntered: parent.source = "qrc:/res/TopWindowFrame/icon_infowin_close_hover.png"
+                onExited: parent.source = "qrc:/res/TopWindowFrame/icon_infowin_close.png"
                 onClicked: closeWin()
             }
         }
@@ -117,6 +117,6 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: -10
-        source: "qrc:/res/top_frame/res/TopWindowFrame/header_center.png"
+        source: "qrc:/res/TopWindowFrame/header_center.png"
     }
 }
