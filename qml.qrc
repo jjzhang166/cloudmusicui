@@ -56,5 +56,19 @@
         <file>res/RightListFrame/icon_localmusic_pressed.png</file>
         <file>UI/CenterView/DownloadmanagerView.qml</file>
         <file>UI/CenterView/FindmusicView.qml</file>
+        <file>res/RightListFrame/icon_clouddisk_pressed.png</file>
+        <file>res/RightListFrame/icon_download_pressed.png</file>
+        <file>res/RightListFrame/icon_songer_pressed.png</file>
+        <file>res/RightListFrame/icon_station_pressed.png</file>
+        <file>res/RightListFrame/icon_findmusic_pressed.png</file>
+        <file>res/RightListFrame/icon_fm_pressed.png</file>
+        <file>res/RightListFrame/icon_friend_pressed.png</file>
+        <file>res/RightListFrame/icon_mv_pressed.png</file>
+        <file>res/MusicView/cover.png</file>
+        <file>res/MusicView/cover_mask.png</file>
+        <file>res/MusicView/cd.png</file>
+        <file>res/MusicView/cd_pin.png</file>
+        <file>UI/MusicView_Max.qml</file>
+        <file>res/MusicView/cd_point.png</file>
     </qresource>
 </RCC>

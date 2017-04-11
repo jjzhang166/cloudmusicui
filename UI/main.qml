@@ -26,15 +26,17 @@ Window {
     ScrollView {
         id: rf
         z: 10
-        height: 511
+        //height: 511
         anchors.top: tf.bottom
         anchors.topMargin: 0
+        anchors.bottom: mv.top
+        anchors.bottomMargin: 0
         width: 210
         style: ScrollViewStyle {
             incrementControl: Rectangle {opacity: 0}
             decrementControl: Rectangle {opacity: 0}
             scrollBarBackground: Rectangle {
-                implicitHeight: 511
+                implicitHeight: rf.height
                 implicitWidth: 12
                 color: "#f5f5f7"
             }
@@ -52,9 +54,10 @@ Window {
         RightListFrame {
             id: _rf
             width: 198
-            height: 511
+            height: rf.height//511
+            scroll_height: rf.height
             onHeightChanged:
-                if(height > 511) {
+                if(height > rf.height) {
                     width = 186
                     rf.width = 198
                 }
@@ -92,19 +95,21 @@ Window {
 
     MusicView {
         z: 10
+        x: 0
         id: mv
         width: 198//rf.width - 1
-        anchors.bottom: parent.bottom
+        height: 58
+        anchors.bottom: bf.top
         anchors.bottomMargin: 0
-        anchors.top: rf.bottom
-        anchors.topMargin: 0
+        max_height: window.height - tf.height
+        max_width: window.width
     }
 
     BottomFrame {
         id: bf
         z: 10
         width: parent.width
-        height: 48
+        height: 51
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
         current_window_width: window.width

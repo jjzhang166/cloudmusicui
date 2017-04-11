@@ -2,7 +2,11 @@
 
 Item {
     Rectangle {
-        anchors.fill: parent
-        color: "red"
+        id: bottomframe
+        x: 0
+        y: 120
+        height: parent.height
+        width: parent.width
+        color: "#fafafa"
     }
 }

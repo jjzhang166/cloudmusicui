@@ -2,8 +2,8 @@
 
 Item {
     id: rightframe
-    property int scroll_height: 511
-    property int rightview: 0
+    property int scroll_height
+    property int rightview: 4
 
     Rectangle {
         id: rectangle1
@@ -26,6 +26,7 @@ Item {
         ListView {
             id: view_recommand
             interactive: false
+            currentIndex: -1
             width: parent.width
             height: 160
             anchors.top: item_recommand.bottom
@@ -33,40 +34,76 @@ Item {
             model: ListModel {
                 ListElement {
                     icon: "qrc:/res/RightListFrame/icon_findmusic.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_findmusic_pressed.png"
                     label: qsTr("FindMusic")
                 }
 
                 ListElement {
                     icon: "qrc:/res/RightListFrame/icon_fm.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_fm_pressed.png"
                     label: qsTr("PrivateFM")
                 }
 
                 ListElement {
                     icon: "qrc:/res/RightListFrame/icon_mv.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_mv_pressed.png"
                     label: qsTr("MV")
                 }
 
                 ListElement {
                     icon: "qrc:/res/RightListFrame/icon_friend.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_friend_pressed.png"
                     label: qsTr("Friend")
                 }
             }
             delegate: Item {
+                id: recommandview_wrapper
                 width: parent.width
                 height: 32
+                MouseArea {
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onEntered: {
+                        cursorShape = Qt.PointingHandCursor
+                        recommandview_text.color = "black"
+                    }
+                    onExited: {
+                        cursorShape = Qt.ArrowCursor
+                        if(!recommandview_wrapper.ListView.isCurrentItem)
+                            recommandview_text.color = "#5c5c5c"
+                    }
+                    onClicked: {
+                        view_music.currentIndex = -1
+                        rightframe.rightview = index
+                        view_recommand.currentIndex = index
+                    }
+                }
+                Rectangle {
+                    id: recommandview_itembg
+                    anchors.fill: parent
+                    color: recommandview_wrapper.ListView.isCurrentItem? "#e6e7ea" : "transparent"
+                    Rectangle {
+                        height: parent.height
+                        width: 3
+                        anchors.left: parent.left
+                        color: recommandview_wrapper.ListView.isCurrentItem? "#c62f2f" : "transparent"
+                    }
+                }
                 Row {
                     spacing: 9
                     anchors.left: parent.left
                     anchors.leftMargin: 16
+                    anchors.verticalCenter: recommandview_itembg.verticalCenter
                     Image {
                         id: img_icon
-                        source: icon
+                        source: recommandview_wrapper.ListView.isCurrentItem? icon_press : icon
                     }
                     Text {
+                        id: recommandview_text
                         text: label
                         height: img_icon.height
                         verticalAlignment: Text.AlignVCenter
-                        color: "#5c5c5c"
+                        color: recommandview_wrapper.ListView.isCurrentItem? "black" : "#5c5c5c"
                     }
                 }
             }
@@ -102,30 +139,30 @@ Item {
 
                 ListElement {
                     icon: "qrc:/res/RightListFrame/icon_download.png"
-                    icon_press: "qrc:/res/RightListFrame/icon_localmusic_pressed.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_download_pressed.png"
                     label: qsTr("DownloadManager")
                 }
 
                 ListElement {
                     icon: "qrc:/res/RightListFrame/icon_clouddisk.png"
-                    icon_press: "qrc:/res/RightListFrame/icon_localmusic_pressed.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_clouddisk_pressed.png"
                     label: qsTr("CloudDisk")
                 }
 
                 ListElement {
                     icon: "qrc:/res/RightListFrame/icon_songer.png"
-                    icon_press: "qrc:/res/RightListFrame/icon_localmusic_pressed.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_songer_pressed.png"
                     label: qsTr("MySonger")
                 }
 
                 ListElement {
                     icon: "qrc:/res/RightListFrame/icon_station.png"
-                    icon_press: "qrc:/res/RightListFrame/icon_localmusic_pressed.png"
+                    icon_press: "qrc:/res/RightListFrame/icon_station_pressed.png"
                     label: qsTr("MyStation")
                 }
             }
             delegate: Item {
-                id: wrapper
+                id: musicview_wrapper
                 width: parent.width
                 height: 32
                 MouseArea {
@@ -133,42 +170,43 @@ Item {
                     hoverEnabled: true
                     onEntered: {
                         cursorShape = Qt.PointingHandCursor
-                        text_.color = "black"
+                        musicview_text.color = "black"
                     }
                     onExited: {
                         cursorShape = Qt.ArrowCursor
-                        if(!wrapper.ListView.isCurrentItem)
-                            text_.color = "#5c5c5c"
+                        if(!musicview_wrapper.ListView.isCurrentItem)
+                            musicview_text.color = "#5c5c5c"
                     }
                     onClicked: {
+                        view_recommand.currentIndex = -1
                         rightframe.rightview = index + 4
                         view_music.currentIndex = index
                     }
                 }
                 Rectangle {
-                    id: item_bg
+                    id: musicview_itembg
                     anchors.fill: parent
-                    color: wrapper.ListView.isCurrentItem? "#e6e7ea" : "transparent"
+                    color: musicview_wrapper.ListView.isCurrentItem? "#e6e7ea" : "transparent"
                     Rectangle {
                         height: parent.height
                         width: 3
                         anchors.left: parent.left
-                        color: wrapper.ListView.isCurrentItem? "#c62f2f" : "transparent"
+                        color: musicview_wrapper.ListView.isCurrentItem? "#c62f2f" : "transparent"
                     }
                 }
                 Row {
                     spacing: 9
                     anchors.left: parent.left
                     anchors.leftMargin: 16
-                    anchors.verticalCenter: item_bg.verticalCenter
+                    anchors.verticalCenter: musicview_itembg.verticalCenter
                     Image {
-                        id: img_icon_
-                        source: wrapper.ListView.isCurrentItem? icon_press : icon
+                        id: musicview_icon
+                        source: musicview_wrapper.ListView.isCurrentItem? icon_press : icon
                     }
                     Text {
-                        id: text_
+                        id: musicview_text
                         text: label
-                        height: img_icon_.height
+                        height: musicview_icon.height
                         verticalAlignment: Text.AlignVCenter
                         color: "#5c5c5c"
                     }
